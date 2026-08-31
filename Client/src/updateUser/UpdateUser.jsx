@@ -3,6 +3,7 @@ import "./updateUser.css"
 import { Link, useNavigate, useParams } from 'react-router-dom'
 import axios from 'axios'
 import toast from "react-hot-toast"
+import API from "../api"
 
 
 const updateUser = () => {
@@ -23,7 +24,7 @@ const updateUser = () => {
     }
 
     useEffect(() =>{
-        axios.get(`http://localhost:5000/api/user/${id}`)
+        axios.get(`${API}${id}`)
         .then((response) =>{
             setUser(response.data)
         })

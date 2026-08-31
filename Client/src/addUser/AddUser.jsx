@@ -3,7 +3,7 @@ import "./adduser.css"
 import { Link, useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import toast from "react-hot-toast"
-// import API from "../api.js";
+import API from "../api.js";
 
 const addUser = () => {
     const Users =  {
@@ -24,7 +24,7 @@ const addUser = () => {
 
     const submitForm = async(e) => {
         e.preventDefault()
-        await axios.post(`http://localhost:5000/api/user`, user)
+        await axios.post(`${API}`, user)
         .then((response) =>{
            toast.success(response.data.message, {position:"top-right"})
             navigate("/")

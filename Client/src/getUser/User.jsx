@@ -5,13 +5,13 @@ import { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import axios from "axios";
 import toast from 'react-hot-toast'
-// import API from "../api.js";
+import API from "../api.js";
 const User = () => {
     const [users, setUsers] = useState([])
     useEffect(() =>{
         const fetchData = async () =>{
             try {
-               const response = await axios.get(`http://localhost:5000/api/users`)  
+               const response = await axios.get(`${API}`)  
                setUsers(response.data)
             } catch (error) {
                 console.log("error while fetching data:", error)
@@ -22,7 +22,7 @@ const User = () => {
 
     const deleteUser = async(userid) =>{
         //  await axios.delete(`http://localhost:5000/api/delete/users/${userid}`)
-        await axios.delete(`http://localhost:5000/api/delete/user/${userid}`)
+        await axios.delete(`${API}${userid}`)
          .then((response) =>{
          setUsers((prevUsers) => prevUsers.filter((users) =>users._id !==userid))
          toast.success(response.data.message, {position:"top-right"})
