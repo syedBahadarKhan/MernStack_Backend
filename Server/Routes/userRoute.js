@@ -21,4 +21,4 @@ import {create, allUsers, getUserById, updateData, deleteUser} from "../Controll
 
 
 
- export default route
+export default route

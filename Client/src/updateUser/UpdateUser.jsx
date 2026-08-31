@@ -24,19 +24,24 @@ const updateUser = () => {
     }
 
     useEffect(() =>{
-        axios.get(`${API}${id}`)
+     const person=   API.get(`/api/user/${id}`)
         .then((response) =>{
             setUser(response.data)
+            console.log("hello");
         })
+        
+        
         .catch((err) =>{
             console.log(err)
+            console.log("hello from error");
+            
         })  
     }, [id])
 
 
     const submitForm = async(e) => {
         e.preventDefault()
-        await axios.put(`http://localhost:5000/api/update/user/${id}`, user)
+        await API.put(`/api/update/user/${id}`, user)
         .then((response) =>{
            toast.success(response.data.message, {position:"top-right"})
             navigate("/")
@@ -45,8 +50,10 @@ const updateUser = () => {
             console.log(error)
         })
     }
-
+ console.log(user.name);
     return (
+       
+        
         <div className='addUser'>
              <Link to="/" type="button" className="btn btn-secondary">
              <i class="fa-solid fa-backward-fast"></i> Back
