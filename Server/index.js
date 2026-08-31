@@ -17,6 +17,9 @@ app.use(express.json());
 app.use(cors())
 
 app.use("/api", route)
+app.get("/",(req,res)=>{
+     res.send("API is running")
+})
 
 const PORT = process.env.PORT;
 
